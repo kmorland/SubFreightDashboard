@@ -1,0 +1,30 @@
+<h1>Home Page</h1>
+
+<h3>Financial Metrics</h3>
+<mat-grid-list cols="3" rowHeight="3:1">
+  <mat-grid-tile>
+    <app-mat-card-component [data]="currentMonthSpend"/>
+  </mat-grid-tile>
+  <mat-grid-tile>
+    <app-mat-card-component [data]="yearToDateSpend"/>
+  </mat-grid-tile>
+  <mat-grid-tile>
+    <app-mat-card-component [data]="amountOwned"/>
+  </mat-grid-tile>
+  <mat-grid-tile>
+    <app-mat-card-component [data]="averageCostPerShipment"/>
+  </mat-grid-tile>
+</mat-grid-list>
+
+<h3>Performance Metrics</h3>
+<mat-grid-list cols="3" rowHeight="3:1">
+  <mat-grid-tile>
+    <app-mat-card-component [data]="currentMonthShipments"/>
+  </mat-grid-tile>
+  <mat-grid-tile>
+    <app-mat-card-component [data]="pendingMonthShipments"/>
+  </mat-grid-tile>
+  <mat-grid-tile>
+    <app-mat-card-component [data]="averageSaved"/>
+  </mat-grid-tile>
+</mat-grid-list>
