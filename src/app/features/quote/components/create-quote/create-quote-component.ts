@@ -14,7 +14,7 @@ import customerJson from 'app/shared/data/customers.json';
 import { ICustomer } from 'app/shared/interfaces/customer';
 import { CustomerService } from 'app/service/customer.service';
 import { LookupDataService } from 'app/service/lookup-data.service';
-import { SharedModule } from 'app/modules/shared/shared-module';
+import { SharedModule } from 'app/shared/modules/shared/shared-module';
 import { AddressComponent } from 'app/shared/components/address/address-component';
 
 

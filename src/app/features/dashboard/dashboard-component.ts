@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { SharedModule } from "app/modules/shared/shared-module";
+import { SharedModule } from "app/shared/modules/shared/shared-module";
 import { CardComponent } from './components/card-component';
 import { ICardData, MatCardType } from 'app/shared/interfaces/card-data-type';
 

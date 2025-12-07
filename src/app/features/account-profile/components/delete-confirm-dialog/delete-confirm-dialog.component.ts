@@ -1,6 +1,6 @@
 import { Component, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { SharedModule } from 'app/modules/shared/shared-module';
+import { SharedModule } from 'app/shared/modules/shared/shared-module';
 
 export interface DeleteConfirmDialogData {
   customerName: string;

@@ -1,6 +1,6 @@
 import { Component, signal } from '@angular/core';
 import { form, required } from '@angular/forms/signals';
-import { SharedModule } from 'app/modules/shared/shared-module';
+import { SharedModule } from 'app/shared/modules/shared/shared-module';
 import { AddressComponent } from 'app/shared/components/address/address-component';
 import { AccountProfileService } from 'app/service/account-profile.service';
 import { IAccountProfile } from 'app/shared/interfaces/account-profile';

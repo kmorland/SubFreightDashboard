@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { filter } from 'rxjs';
-import { SharedModule } from 'app/modules/shared/shared-module';
+import { SharedModule } from 'app/shared/modules/shared/shared-module';
 
 @Component({
   selector: 'app-root',

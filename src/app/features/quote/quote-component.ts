@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { SharedModule } from 'app/modules/shared/shared-module';
+import { SharedModule } from 'app/shared/modules/shared/shared-module';
 import { CreateQuoteComponent } from "./components/create-quote/create-quote-component";
 import { QuoteResultsComponent } from "./components/results/quote-results-component";
 

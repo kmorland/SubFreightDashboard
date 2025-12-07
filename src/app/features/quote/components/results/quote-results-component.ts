@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { SharedModule } from 'app/modules/shared/shared-module';
+import { SharedModule } from 'app/shared/modules/shared/shared-module';
 
 export interface PeriodicElement {
   name: string;

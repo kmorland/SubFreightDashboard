@@ -1,7 +1,7 @@
 import { Component, Inject, signal } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { form, pattern, required } from '@angular/forms/signals';
-import { SharedModule } from 'app/modules/shared/shared-module';
+import { SharedModule } from 'app/shared/modules/shared/shared-module';
 import { AddressComponent } from 'app/shared/components/address/address-component';
 import { ICustomer } from 'app/shared/interfaces/customer';
 
