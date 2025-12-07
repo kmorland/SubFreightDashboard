@@ -11,11 +11,11 @@ export const routes: Routes = [
     },
     {
         path: 'reporting',
-        loadComponent: () => import('./pages/reporting-component/reporting-component').then(m => m.ReportingComponent)
+        loadComponent: () => import('./features/reporting/reporting-component').then(m => m.ReportingComponent)
     },
     {
         path: 'auth/login',
-        loadComponent: () => import('./pages/login-page-component/login-page-component').then(m => m.LoginPageComponent)
+        loadComponent: () => import('./features/login/login-component').then(m => m.LoginComponent)
     },
     {
         path: 'account-profile',

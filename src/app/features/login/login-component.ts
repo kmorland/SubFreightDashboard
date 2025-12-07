@@ -5,9 +5,9 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 @Component({
   selector: 'app-login-page-component',
   imports: [MatCardModule, MatFormFieldModule],
-  templateUrl: './login-page-component.html',
-  styleUrl: './login-page-component.scss',
+  templateUrl: './login-component.html',
+  styleUrl: './login-component.scss',
 })
-export class LoginPageComponent {
+export class LoginComponent {
 
 }
