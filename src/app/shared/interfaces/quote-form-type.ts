@@ -3,23 +3,31 @@ export interface IAddress {
     address2: string
     city: string,
     state: string,
-    postalCode: string
+    postalCode: string,
+    pickupDate?: Date | null, //Optional property
+    pickupTime?: string, //Optional property
+    dropOffDate?: Date | null, //Optional property
+    dropOffTime?: string //Optional property
 };
 
 interface IItems {
-    quality: number,
-    weight: number,
-    dimensions: {
-        length: number,
-        width: number,
-        height: number
-    }
+    length: number
+    width: number
+    height: number
+    weight: number
+    weightType: number
+    description: string
+    hazmat: boolean
+    haxmatClass: number
+    productClass: number
+    stackable: boolean
+    quantity: number
 };
 
 export interface IQuoteData {
     origin: IAddress,
     destination: IAddress,
-    pickup: Date,
-    delivery: Date,
-    items: IItems[]
+    items: IItems[],
+    accessorials: number[],
+    customerSearch: string,
 };

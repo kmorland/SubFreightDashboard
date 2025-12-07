@@ -1,15 +1,19 @@
 import { Component } from '@angular/core';
-import { MatGridListModule } from '@angular/material/grid-list';
-import { MatCardComponent } from '../../shared/mat-card-component/mat-card-component';
-import { ICardData, MatCardType } from '../../shared/interfaces/card-data-type';
+import { SharedModule } from "app/modules/shared/shared-module";
+import { CardComponent } from './components/card-component';
+import { ICardData, MatCardType } from 'app/shared/interfaces/card-data-type';
 
 @Component({
-  selector: 'app-dashboard-component',
-  imports: [MatGridListModule, MatCardComponent],
+  selector: 'app-dashboard',
+  imports: [
+    SharedModule,
+    CardComponent
+  ],
   templateUrl: './dashboard-component.html',
   styleUrl: './dashboard-component.scss',
 })
 export class DashboardComponent {
+
   public currentMonthSpend!: ICardData;
   public yearToDateSpend!: ICardData;
   public averageCostPerShipment!: ICardData;
@@ -62,5 +66,5 @@ export class DashboardComponent {
       description: 0
     }
   }
-}
 
+}

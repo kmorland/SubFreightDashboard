@@ -1,0 +1,166 @@
+<section class="container-fluid">
+    <form novalidate>
+        <div class="container mb-4">
+            <div class="row no-gutters pb-2">
+                <div class="col-lg-6 col-md-12 pb-2 pr-1">
+                    <mat-card>
+                        <mat-card-title class="text-center pb-sm-2"><h4>Where are you shipping from?</h4></mat-card-title>
+                        <mat-card-content>
+                            <div class="row no-gutters">
+                                <div class="col-lg-5 col-md-12 pr-1">
+                                    <app-address-component [addressField]="addressForm"></app-address-component>
+                                    
+                                    <mat-form-field class="px-2 w-100" appearance="outline">
+                                        <input matInput [matDatepicker]="pickerOrigin" placeholder="Ready for pickup" (dateChange)="onOriginDateChange($event)">
+                                        <mat-datepicker-toggle matSuffix [for]="pickerOrigin"></mat-datepicker-toggle>
+                                        <mat-datepicker #pickerOrigin></mat-datepicker>
+                                    </mat-form-field>
+
+                                    <mat-form-field class="px-2 w-100" appearance="outline">
+                                        <mat-select (selectionChange)="onOriginTimeSelectionChange($event)" placeholder="Pickup time">
+                                            @for (time of timeList; track time.militaryTime) {
+                                                <mat-option [value]="time.militaryTime">{{ time.militaryTime }} / {{ time.enTime }}</mat-option>
+                                            }
+                                        </mat-select>
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-lg-7 col-md-12">
+                                    <h6>What type of location is this?</h6> <!-- Accessories -->
+                                    <mat-radio-group color="primary" value="quoteForm.accessories" required>
+                                        @for (type of keys(LocationType); track $index) {
+                                            <mat-radio-button [value]="type">
+                                                {{ getLocationTypeString(type) }}
+                                            </mat-radio-button>
+                                        }
+                                    </mat-radio-group>
+                                </div>
+                            </div>
+                        </mat-card-content>
+                    </mat-card>
+                </div>
+                <div class="col-lg-6 col-md-12 pb-2 pl-1">
+                    <mat-card formGroupName="destination">
+                        <mat-card-title class="text-center pb-sm-2"><h4>Where are you shipping to?</h4></mat-card-title>
+                        <mat-card-content>
+                            <div class="row no-gutters">
+                                <mat-form-field>
+                                    <mat-label>Search for Customer shipping to?</mat-label>
+                                    <input type="text"
+                                        matInput
+                                        placeholder="Search for Customer shipping to?"
+                                        (input)="onCustomerSearchChange($event)"
+                                        [matAutocomplete]="auto"
+                                        [field]="quoteForm.customerSearch">
+                                    <mat-autocomplete #auto="matAutocomplete" (optionSelected)="onSelectedCustomer($event)" [displayWith]="displayCustomerFn">
+                                    @for (customer of filteredOptions | async; track customer) {
+                                        <mat-option [value]="customer">{{customer.businessName}}</mat-option>
+                                    }
+                                    </mat-autocomplete>
+                                </mat-form-field>
+                                <app-address-component [addressField]="quoteForm.destination"></app-address-component>
+                                
+                                <mat-form-field class="px-2 w-100" appearance="outline">
+                                    <input matInput [matDatepicker]="pickerDestination" placeholder="Ready for pickup" (dateChange)="onDestinationDateChange($event)">
+                                    <mat-datepicker-toggle matSuffix [for]="pickerDestination"></mat-datepicker-toggle>
+                                    <mat-datepicker #pickerDestination></mat-datepicker>
+                                </mat-form-field>
+
+                                <mat-form-field class="px-2 w-100" appearance="outline">
+                                    <mat-select (selectionChange)="onDestinationTimeSelectionChange($event)" placeholder="Pickup time">
+                                        @for (time of timeList; track time.militaryTime) {
+                                            <mat-option [value]="time.militaryTime">{{ time.militaryTime }} / {{ time.enTime }}</mat-option>
+                                        }
+                                    </mat-select>
+                                </mat-form-field>
+
+                                <div class="col-lg-7 col-md-12">
+                                    <h6>What type of location is this?</h6>
+                                    <mat-radio-group color="primary" [field]="quoteForm.accessorials" required>
+                                        @for (type of keys(LocationType); track $index) {
+                                            <mat-radio-button [value]="type">
+                                                {{ getLocationTypeString(type) }}
+                                            </mat-radio-button>
+                                        }
+                                    </mat-radio-group>
+                                </div>
+                            </div>
+                        </mat-card-content>
+                    </mat-card>
+                </div>
+                <div class="col-12">
+                    <mat-card formGroupName="shipping">
+                        <mat-card-title class="text-center pb-sm-2"><h4>What are you shipping?</h4></mat-card-title>
+                        <mat-card-content>
+                            <div class="row no-gutters d-flex justify-content-around">
+                                <div class="col-lg-4 col-md-12 text-lg-center">
+                                    <mat-radio-group color="primary" formControlName="shippingType" required>
+                                        @for (type of keys(ShippingType); track $index) {
+                                            <mat-radio-button [value]="type">
+                                                {{ getShippingTypeString(type) }}
+                                            </mat-radio-button>
+                                        }
+                                    </mat-radio-group>
+                                </div>
+                                <div class="col-lg-4 col-md-12 text-lg-center">
+                                    <mat-form-field id="howPackaged" class="w-100">
+                                        <label>How is it packaged?</label>
+                                        <mat-select class="m-0 p-0" formControlName="shippingPackage" (selectionChange)="onShippingPackageChange($event)" required>
+                                            @for (type of keys(PackageType); track $index) {
+                                                <mat-option [value]="type">
+                                                    {{ getPackageTypeString(type) }}
+                                                </mat-option>
+                                            }
+                                        </mat-select>
+                                    </mat-form-field>
+                                    
+                                    @if (isCustomDimensions) {
+                                        <mat-form-field class="col-4">
+                                            <input matInput type="number" placeholder="Length" formControlName="shippingLength" required>
+                                        </mat-form-field>
+                                        <mat-form-field class="col-4">
+                                            <input matInput type="number" placeholder="Width" formControlName="shippingWidth" required>
+                                        </mat-form-field>
+                                        <mat-form-field class="col-4">
+                                            <input matInput type="number" placeholder="Height" formControlName="shippingHeight" required>
+                                        </mat-form-field>
+                                    }
+                                    
+                                    <div class="row no-gutters d-flex justify-content-between">
+                                        <mat-form-field class="col-4">
+                                            <input matInput type="number" placeholder="How many?" formControlName="shippingQuantity" required>
+                                        </mat-form-field>
+                                        <mat-form-field class="col-4">
+                                            <input matInput type="number" placeholder="Total Weight?" formControlName="shippingWeight" required>
+                                        </mat-form-field>
+
+                                        <mat-form-field class="col-2">
+                                            <mat-select formControlName="shippingMeasurement" required placeholder="Weight Unit">
+                                                <mat-option value="lbs">lbs</mat-option>
+                                                <mat-option value="kgs">kgs</mat-option>
+                                            </mat-select>
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                            </div>
+                        </mat-card-content>
+                    </mat-card>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <div class="float-right">
+                        <button mat-raised-button color="accent" type="reset" class="mr-2" (click)="onReset($event)" [disabled]="isSubmitting">Reset</button>
+                        <button mat-raised-button color="accent" type="submit" class="ml-2" (click)="onSubmit($event)">
+                            <!-- [disabled]="!quoteForm().valid() || isSubmitting" -->
+                            @if (isSubmitting) {
+                                <span class="spinner-border spinner-border-sm"></span>
+                            } @else {
+                                <span>Submit</span>
+                            }
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</section>

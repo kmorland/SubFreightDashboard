@@ -1,0 +1,13 @@
+<h2>Generate Quote</h2>
+<h6>Follow the steps to create quote, retrieve the options, and start a shipment</h6>
+<mat-stepper [linear]="true" #stepper isNavigable="false">
+  <mat-step label="Create Quote">
+    <app-create-quote />    
+  </mat-step>
+  <mat-step label="Quote Results">
+    <app-quote-results />
+  </mat-step>
+  <mat-step label="Create shipment">
+    
+  </mat-step>
+</mat-stepper>

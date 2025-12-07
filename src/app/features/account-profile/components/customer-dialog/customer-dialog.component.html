@@ -1,0 +1,57 @@
+<h2 mat-dialog-title>{{ data.isEdit ? 'Edit Customer' : 'Add Customer' }}</h2>
+
+<mat-dialog-content>
+  <form>
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Business Name</mat-label>
+      <input matInput type="text" [field]="customerForm.businessName">
+      @if( customerForm.businessName().invalid() && customerForm.businessName().touched()) {
+        @for (error of customerForm.businessName().errors(); track error.kind) {
+          <mat-error class="error-message">{{ error.message }}</mat-error>
+        }
+      }
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Contact Name</mat-label>
+      <input matInput type="text" [field]="customerForm.contactName">
+      @if( customerForm.contactName().invalid() && customerForm.contactName().touched()) {
+        @for (error of customerForm.contactName().errors(); track error.kind) {
+          <mat-error class="error-message">{{ error.message }}</mat-error>
+        }
+      }
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Email Address</mat-label>
+      <input matInput type="email" [field]="customerForm.emailAddress">
+      @if( customerForm.emailAddress().invalid() && customerForm.emailAddress().touched()) {
+        @for (error of customerForm.emailAddress().errors(); track error.kind) {
+          <mat-error class="error-message">{{ error.message }}</mat-error>
+        }
+      }
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Phone</mat-label>
+      <input matInput type="tel" [field]="customerForm.phone">
+      @if( customerForm.phone().invalid() && customerForm.phone().touched()) {
+        @for (error of customerForm.phone().errors(); track error.kind) {
+          <mat-error class="error-message">{{ error.message }}</mat-error>
+        }
+      }
+    </mat-form-field>
+
+    <div class="address-section">
+      <h4>Address</h4>
+      <app-address-component [addressField]="customerForm.address"></app-address-component>
+    </div>
+  </form>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-button (click)="onCancel()">Cancel</button>
+  <button mat-raised-button color="primary" (click)="onSave()">
+    {{ data.isEdit ? 'Update' : 'Add' }}
+  </button>
+</mat-dialog-actions>

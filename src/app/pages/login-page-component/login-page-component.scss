@@ -1,0 +1,12 @@
+/* In your login component's CSS file (e.g., login.component.css) */
+.login-container {
+  width: 100vw; /* Occupy 100% of the viewport width */
+  height: 100vh; /* Occupy 100% of the viewport height */
+  margin: 0;
+  padding: 0;
+  display: flex; /* Use flexbox for centering content */
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  /* Add any other styling for your login page, e.g., background color/image */
+  background-color: #f0f2f5; 
+}
