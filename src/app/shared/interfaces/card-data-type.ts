@@ -1,12 +1,10 @@
-import { RouterLink } from "@angular/router"
-
-export enum MatCardType {
+export enum CardType {
     Currency = 'CURRENCY',
     Text = 'TEXT',
 };
 
 export interface ICardData {
-    type: MatCardType,
+    type: CardType,
     heading: string,
     description: string|number,
     image?: string,
