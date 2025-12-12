@@ -1,0 +1,55 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>Shipment Items</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <!-- Item Rows -->
+    @for (item of items(); track $index) {
+      <app-item
+        [itemForm]="itemForms()[$index]?.form"
+        [itemModel]="itemForms()[$index]?.model"
+        [unitTypes]="unitTypes"
+        [classOptions]="classOptions"
+        (weightUnitToggle)="onWeightUnitToggle($index, $event)"
+        (dimensionUnitToggle)="onDimensionUnitToggle($index, $event)"
+        (stackableToggle)="onStackableToggle($index)"
+        (hazmatToggle)="onHazmatToggle($index)"
+        (deleteItem)="onRemoveRow($index)"
+      />
+    }
+  </mat-card-content>
+  <mat-card-footer>
+    <mat-card-actions>
+      <button
+          type="button"
+          mat-button
+          color="primary"
+          (click)="onAddRow()"
+        >
+          <mat-icon>add_circle</mat-icon>
+          Add row
+        </button>
+        <button
+          type="button"
+          mat-button
+          (click)="onDensityCalculator()"
+        >
+          <mat-icon>calculate</mat-icon>
+          Density Calculator
+        </button>
+
+      <div class="totals">
+        <span class="total-item">
+          <strong>Total Weight(LB):</strong> {{ getTotalWeight() }}
+        </span>
+        <span class="total-item">
+          <mat-icon class="info-icon" matTooltip="Total Density">info</mat-icon>
+          <strong>Total Density(lb/cu ft):</strong> {{ getTotalDensity() }}
+        </span>
+        <span class="total-item">
+          <strong>Total Volume(cu ft):</strong> {{ getTotalVolume() }}
+        </span>
+      </div>  
+    </mat-card-actions>
+  </mat-card-footer>
+</mat-card>

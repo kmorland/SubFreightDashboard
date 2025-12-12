@@ -1,0 +1,97 @@
+
+<mat-card>
+  <mat-card-header class="border-b-2 border-blue-500 flex flex-col sm:flex-row items-start sm:items-center gap-2">
+      <mat-card-title>Origin</mat-card-title>
+        <div class="ml-auto">
+          <button mat-button class="address-book-btn">
+            <mat-icon>book</mat-icon>
+            Address Book
+          </button>
+      </div>
+  </mat-card-header>
+  <mat-card-content>
+
+    <div class="flex pt-5 w-full">
+      <div class="w-full sm:flex-auto">
+        <mat-button-toggle-group
+          [field]="originForm.country"
+          [hideSingleSelectionIndicator]="false">
+          <mat-button-toggle value="US/CAN">US/CAN</mat-button-toggle>
+          <mat-button-toggle value="MEX">Mex</mat-button-toggle>
+        </mat-button-toggle-group>
+      </div>
+    </div>
+
+    <div class="flex flex-col sm:flex-row gap-4 pt-5">
+      <div class="w-full sm:flex-auto">
+        <mat-form-field appearance="fill" floatLabel="always">
+          <input
+            matInput
+            placeholder="City state Zip"
+            [field]="originForm.address"
+          />
+          @if(originForm.address().errors() && originForm.address().touched()) {
+            @for(error of originForm.address().errors();  track error) {
+              <mat-error>{{ error.message }}</mat-error>
+            }
+          }
+        </mat-form-field>
+      </div>
+      <div class="w-full sm:flex-auto">
+        <mat-label>Site Type</mat-label>
+        <mat-button-toggle-group
+          aria-label="Site type"
+          [hideSingleSelectionIndicator]="false"
+        >
+          <mat-button-toggle value="business">Business</mat-button-toggle>
+          <mat-button-toggle value="residence">Residence</mat-button-toggle>
+        </mat-button-toggle-group>
+      </div>
+      <div class="w-full sm:flex-auto">
+        <mat-label>Pickup Date</mat-label>
+          <mat-form-field appearance="outline" [floatLabel]="'always'">
+            <input
+              matInput
+              [matDatepicker]="picker"
+              [field]="originForm.pickupDate"
+              (dateChange)="onDateChange($event.value)"
+              placeholder="12/08/2025"
+            />
+            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+            @if (originForm.pickupDate().errors(); as errors) {
+              <mat-error>{{ errors[0]?.message }}</mat-error>
+            }
+          </mat-form-field>
+      </div>
+    </div>
+
+    <div class="flex pt-4">
+      <div class="flex-col w-full sm:w-auto sm:max-w-xs">
+        <mat-label class=""field-label>Non Commercial Pickup Site</mat-label>
+        <mat-form-field appearance="outline">
+          <mat-select
+            [field]="originForm.nonCommercialPickupSite"
+            placeholder="Select..."
+          >
+            @for (option of nonCommercialOptions; track option) {
+              <mat-option [value]="option">{{ option }}</mat-option>
+            }
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div class="flex pt-4">
+      <div class="w-full">
+        <mat-label>Accessorials</mat-label>
+        <mat-button-toggle-group class="flex flex-wrap gap-2" [hideMultipleSelectionIndicator]="false" multiple>
+          <mat-button-toggle value="liftgate">Liftgate</mat-button-toggle>
+          <mat-button-toggle value="insidepickup">Inside Pickup</mat-button-toggle>
+          <mat-button-toggle value="appointment">Appointment</mat-button-toggle>
+        </mat-button-toggle-group>
+      </div>
+    </div>
+
+  </mat-card-content>
+</mat-card>

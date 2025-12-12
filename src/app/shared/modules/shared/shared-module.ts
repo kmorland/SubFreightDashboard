@@ -20,6 +20,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatGridListModule, MatGridTile } from '@angular/material/grid-list';
 import { MatStepperModule } from '@angular/material/stepper';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
 
 @NgModule({
   declarations: [],
@@ -48,7 +49,8 @@ import { MatStepperModule } from '@angular/material/stepper';
     MatTooltipModule,
     MatGridListModule,
     MatGridTile,
-    MatStepperModule
+    MatStepperModule,
+    MatButtonToggleModule,
   ],
   exports: [
     CommonModule,
@@ -76,6 +78,7 @@ import { MatStepperModule } from '@angular/material/stepper';
     MatGridListModule,
     MatGridTile,
     MatStepperModule,
+    MatButtonToggleModule,
   ]
 })
 export class SharedModule { }

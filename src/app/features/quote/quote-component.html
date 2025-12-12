@@ -2,7 +2,19 @@
 <h6>Follow the steps to create quote, retrieve the options, and start a shipment</h6>
 <mat-stepper [linear]="true" #stepper isNavigable="false">
   <mat-step label="Create Quote">
-    <app-create-quote />    
+    
+    <div class="flex flex-col lg:flex-row gap-4 mb-4">
+        <div class="w-full lg:w-1/2">
+          <app-origin />
+        </div>
+        <div class="w-full lg:w-1/2">
+          <app-destination />
+        </div>
+    </div>
+
+    <app-shipment-items 
+      (densityCalculator)="openDensityCalculator()">
+    </app-shipment-items> 
   </mat-step>
   <mat-step label="Quote Results">
     <app-quote-results />

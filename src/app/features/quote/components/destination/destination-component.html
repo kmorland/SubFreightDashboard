@@ -1,0 +1,83 @@
+
+
+<mat-card>
+  <mat-card-header class="border-b-2 border-blue-500 flex flex-col sm:flex-row items-start sm:items-center gap-2">
+      <mat-card-title>Destination</mat-card-title>
+        <div class="ml-auto">
+          <button mat-button class="address-book-btn">
+            <mat-icon>book</mat-icon>
+            Address Book
+          </button>
+      </div>
+  </mat-card-header>
+  <mat-card-content>
+
+    <div class="flex pt-5 w-full">
+      <div class="w-full sm:flex-auto">
+        <mat-button-toggle-group
+          [field]="destinationForm.country"
+          [hideSingleSelectionIndicator]="false">
+          <mat-button-toggle value="US/CAN">US/CAN</mat-button-toggle>
+          <mat-button-toggle value="MEX">Mex</mat-button-toggle>
+        </mat-button-toggle-group>
+      </div>
+    </div>
+
+    <div class="flex flex-col sm:flex-row gap-4 pt-5">
+      <div class="w-full sm:flex-auto">
+        <mat-form-field appearance="fill" floatLabel="always">
+          <input
+            matInput
+            placeholder="City state Zip"
+            [field]="destinationForm.address"
+          />
+          @if(destinationForm.address().errors() && destinationForm.address().touched()) {
+            @for(error of destinationForm.address().errors();  track error) {
+              <mat-error>{{ error.message }}</mat-error>
+            }
+          }
+        </mat-form-field>
+      </div>
+      <div class="w-full sm:flex-auto">
+        <mat-label>Site Type</mat-label>
+        <mat-button-toggle-group
+          aria-label="Site type"
+          [hideSingleSelectionIndicator]="false"
+        >
+          <mat-button-toggle value="business">Business</mat-button-toggle>
+          <mat-button-toggle value="residence">Residence</mat-button-toggle>
+        </mat-button-toggle-group>
+      </div>
+    </div>
+
+    <div class="flex pt-4">
+      <div class="flex-col w-full sm:w-auto sm:max-w-xs">
+        <mat-label class=""field-label>Non Commercial Pickup Site</mat-label>
+        <mat-form-field appearance="outline">
+          <mat-select
+            [field]="destinationForm.nonCommercialDeliverySite"
+            placeholder="Select..."
+          >
+            @for (option of nonCommercialOptions; track option) {
+              <mat-option [value]="option">{{ option }}</mat-option>
+            }
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div class="flex pt-4">
+      <div class="w-full">
+        <mat-label>Accessorials</mat-label>
+        <mat-button-toggle-group class="flex flex-wrap gap-2" [hideMultipleSelectionIndicator]="false" multiple>
+          <mat-button-toggle value="liftgate">Liftgate</mat-button-toggle>
+          <mat-button-toggle value="notify-prior-to-arrival">Notify Prior To Arrival</mat-button-toggle>
+          <mat-button-toggle value="insidedelivery">Inside Delivery</mat-button-toggle>
+          <mat-button-toggle value="appointment">Appointment</mat-button-toggle>
+          <mat-button-toggle value="sort-and-segregate">Sort & Segregate</mat-button-toggle>
+        </mat-button-toggle-group>
+      </div>
+    </div>
+
+  </mat-card-content>
+</mat-card>
