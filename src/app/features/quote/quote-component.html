@@ -3,18 +3,39 @@
 <mat-stepper [linear]="true" #stepper isNavigable="false">
   <mat-step label="Create Quote">
     
-    <div class="flex flex-col lg:flex-row gap-4 mb-4">
+    <form (submit)="onSubmit($event)">
+      <div class="flex flex-col lg:flex-row gap-4 mb-4 mt-10">
         <div class="w-full lg:w-1/2">
-          <app-origin />
+          <app-origin [originForm]="quoteForm.origin" (addressSelected)="onOriginAddressSelectedFn($event)" (accessorialChange)="onAccessorialOriginChange($event)" />
         </div>
         <div class="w-full lg:w-1/2">
-          <app-destination />
+          <app-destination [destinationForm]="quoteForm.destination" (addressSelected)="onDestinationAddressSelectedFn($event)" (accessorialChange)="onAccessorialDestinationChange($event)" />
         </div>
-    </div>
-
-    <app-shipment-items 
-      (densityCalculator)="openDensityCalculator()">
-    </app-shipment-items> 
+      </div>
+    
+      <div class="flex w-full mt-10">
+        <app-shipment-items
+          (densityCalculator)="openDensityCalculator()"
+          (addItemRow)="onAddItemRow()"
+          (removeItemRow)="onRemoveItemRow($event)"
+          [quoteForm]="quoteForm"
+          >
+        </app-shipment-items>
+      </div>
+    
+      <div class="flex mt-10">
+        <div class="w-1/2">
+          <app-additional-details />
+        </div>
+        <div class="w-1/2">
+          <button matButton="filled" (click)="onReset()">Reset</button>
+          <button matButton="filled">Submit</button>
+        </div>
+      </div>
+      
+    </form>
+    
+    
   </mat-step>
   <mat-step label="Quote Results">
     <app-quote-results />

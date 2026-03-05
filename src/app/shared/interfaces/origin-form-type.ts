@@ -1,9 +1,12 @@
+import { IAddress } from "./quote-form-type";
+
 export interface IOriginForm {
   country: 'USA/CAN' | 'MEX';
-  address: string;
-  siteType: 'Business' | 'Residence';
+  searchTerm: string;
+  address: IAddress;
+  siteType: 'business' | 'residence';
   pickupDate: string;
-  nonCommercialPickupSite: string;
+  nonCommercialPickupSite: number;
   accessorials: {
     liftGate: boolean;
     insidePickup: boolean;

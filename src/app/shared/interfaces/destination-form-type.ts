@@ -1,8 +1,11 @@
+import { IAddress } from "./quote-form-type";
+
 export interface IDestinationForm {
   country: 'USA/CAN' | 'MEX';
-  address: string;
-  siteType: 'Business' | 'Residence' | 'TradeShow';
-  nonCommercialDeliverySite: string;
+  searchTerm: string,
+  address: IAddress;
+  siteType: 'business' | 'residence' | 'tradeshow';
+  nonCommercialDeliverySite: number;
   accessorials: {
     liftGate: boolean;
     notifyPriorToArrival: boolean;

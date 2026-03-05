@@ -1,0 +1,262 @@
+[
+  {
+    "id": 10,
+    "name": "Lift Gate Pickup",
+    "type": "origin"
+  },
+  {
+    "id": 20,
+    "name": "Lift Gate Delivery",
+    "type": "destination"
+  },
+  {
+    "id": 30,
+    "name": "Residential Pickup",
+    "type": "origin"
+  },
+  {
+    "id": 40,
+    "name": "Residential Delivery",
+    "type": "destination"
+  },
+  {
+    "id": 50,
+    "name": "Inside Delivery",
+    "type": "destination"
+  },
+  {
+    "id": 60,
+    "name": "Notify Prior To Arrival",
+    "type": "origin"
+  },
+  {
+    "id": 70,
+    "name": "Hazardous",
+    "type": "origin"
+  },
+  {
+    "id": 80,
+    "name": "Non Commercial Delivery - Airport",
+    "type": "destination"
+  },
+  {
+    "id": 90,
+    "name": "Non Commercial Delivery - Construction/Utility Site",
+    "type": "destination"
+  },
+  {
+    "id": 100,
+    "name": "Non Commercial Delivery - Correctional Facility",
+    "type": "destination"
+  },
+  {
+    "id": 110,
+    "name": "Non Commercial Delivery - Military Base",
+    "type": "destination"
+  },
+  {
+    "id": 120,
+    "name": "Non Commercial Delivery - Piers/Wharves",
+    "type": "destination"
+  },
+  {
+    "id": 130,
+    "name": "Non Commercial Delivery - Storage Facility",
+    "type": "destination"
+  },
+  {
+    "id": 140,
+    "name": "Non Commercial Delivery - Church",
+    "type": "destination"
+  },
+  {
+    "id": 150,
+    "name": "Non Commercial Delivery - Farm",
+    "type": "destination"
+  },
+  {
+    "id": 160,
+    "name": "Non Commercial Delivery - School",
+    "type": "destination"
+  },
+  {
+    "id": 170,
+    "name": "Non Commercial Delivery - Ranch",
+    "type": "destination"
+  },
+  {
+    "id": 180,
+    "name": "Non Commercial Delivery - Country Club",
+    "type": "destination"
+  },
+  {
+    "id": 190,
+    "name": "Non Commercial Delivery - Shopping Mall",
+    "type": "destination"
+  },
+  {
+    "id": 200,
+    "name": "Non Commercial Delivery - Mines/Quarries",
+    "type": "destination"
+  },
+  {
+    "id": 210,
+    "name": "Non Commercial Delivery - Golf Course",
+    "type": "destination"
+  },
+  {
+    "id": 220,
+    "name": "Non Commercial Delivery - Nursing Homes",
+    "type": "destination"
+  },
+  {
+    "id": 230,
+    "name": "Non Commercial Delivery - Government Site",
+    "type": "destination"
+  },
+  {
+    "id": 240,
+    "name": "Non Commercial Delivery - Container Freight Station",
+    "type": "destination"
+  },
+  {
+    "id": 250,
+    "name": "Non Commercial Delivery - Hotel",
+    "type": "destination"
+  },
+  {
+    "id": 260,
+    "name": "Notification Pickup",
+    "type": "origin"
+  },
+  {
+    "id": 270,
+    "name": "Notification Delivery",
+    "type": "destination"
+  },
+  {
+    "id": 280,
+    "name": "Inside Pickup",
+    "type": "origin"
+  },
+  {
+    "id": 290,
+    "name": "Sort and Segregate",
+    "type": "origin"
+  },
+  {
+    "id": 300,
+    "name": "Protect From Freeze",
+    "type": "origin"
+  },
+  {
+    "id": 310,
+    "name": "Non Commercial Pickup - Airport",
+    "type": "origin"
+  },
+  {
+    "id": 320,
+    "name": "Non Commercial Pickup - Construction/Utility Site",
+    "type": "origin"
+  },
+  {
+    "id": 330,
+    "name": "Non Commercial Pickup - Correctional Facility",
+    "type": "origin"
+  },
+  {
+    "id": 340,
+    "name": "Non Commercial Pickup - Military Base",
+    "type": "origin"
+  },
+  {
+    "id": 350,
+    "name": "Non Commercial Pickup - Piers / Wharves",
+    "type": "origin"
+  },
+  {
+    "id": 360,
+    "name": "Non Commercial Pickup - Storage Facility",
+    "type": "origin"
+  },
+  {
+    "id": 370,
+    "name": "Non Commercial Pickup - Church",
+    "type": "origin"
+  },
+  {
+    "id": 380,
+    "name": "Non Commercial Pickup - Farm",
+    "type": "origin"
+  },
+  {
+    "id": 390,
+    "name": "Non Commercial Pickup - School",
+    "type": "origin"
+  },
+  {
+    "id": 400,
+    "name": "Non Commercial Pickup - Ranch",
+    "type": "origin"
+  },
+  {
+    "id": 410,
+    "name": "Non Commercial Pickup - Country Club",
+    "type": "origin"
+  },
+  {
+    "id": 420,
+    "name": "Non Commercial Pickup - Shopping Malls",
+    "type": "origin"
+  },
+  {
+    "id": 430,
+    "name": "Non Commercial Pickup - Mines / Quaries",
+    "type": "origin"
+  },
+  {
+    "id": 440,
+    "name": "Non Commercial Pickup - Golf Course",
+    "type": "origin"
+  },
+  {
+    "id": 450,
+    "name": "Non Commercial Pickup - Nursing Homes",
+    "type": "origin"
+  },
+  {
+    "id": 460,
+    "name": "Non Commercial Pickup - Government Site",
+    "type": "origin"
+  },
+  {
+    "id": 470,
+    "name": "Non Commercial Pickup - Container Freight Station",
+    "type": "origin"
+  },
+  {
+    "id": 480,
+    "name": "Non Commercial Pickup - Hotel",
+    "type": "origin"
+  },
+  {
+    "id": 490,
+    "name": "Non Commercial Pickup - Limited Access",
+    "type": "origin"
+  },
+  {
+    "id": 500,
+    "name": "Non Commercial Delivery - Limited Access",
+    "type": "destination"
+  },
+  {
+    "id": 510,
+    "name": "Appointment Pickup",
+    "type": "origin"
+  },
+  {
+    "id": 520,
+    "name": "Appointment Delivery",
+    "type": "destination"
+  }
+]

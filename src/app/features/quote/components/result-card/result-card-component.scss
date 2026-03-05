@@ -1,0 +1,36 @@
+.result-card {
+  overflow: hidden;
+
+  .carrier-logo img {
+    object-fit: contain;
+  }
+
+  .guarantee-box {
+    min-width: 120px;
+  }
+
+  .badge {
+    width: 32px;
+    height: 32px;
+
+    mat-icon {
+      font-size: 18px;
+      width: 18px;
+      height: 18px;
+    }
+  }
+
+  .restrictions-row {
+    font-weight: 500;
+  }
+}
+
+::ng-deep .result-card {
+  .mat-mdc-radio-button .mdc-radio {
+    padding: 4px;
+  }
+
+  .mat-mdc-card-content:last-child {
+    padding-bottom: 0;
+  }
+}

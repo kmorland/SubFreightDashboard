@@ -1,0 +1,88 @@
+<mat-card>
+  <mat-card-header class="border-b-2 border-blue-500">
+    <mat-card-title>Additional Details</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+
+    <div class="flex flex-col gap-6 pt-5">
+
+      <!-- Total Declared Value and Condition -->
+      <div class="flex flex-col sm:flex-row gap-4 items-start sm:items-center">
+        <div class="flex-1">
+          <label class="field-label">Total Declared Value and Condition of Goods?</label>
+        </div>
+        <div class="flex gap-4 items-center">
+          <div class="value-field">
+            <label class="field-label text-center">Value($)</label>
+            <mat-form-field appearance="outline">
+              <input
+                matInput
+                type="number"
+              />
+            </mat-form-field>
+          </div>
+          <div class="condition-field">
+            <mat-label class="field-label text-center">Condition</mat-label>
+            <mat-button-toggle-group [hideSingleSelectionIndicator]="false">
+              <mat-button-toggle>New</mat-button-toggle>
+              <mat-button-toggle>Used</mat-button-toggle>
+            </mat-button-toggle-group>
+          </div>
+        </div>
+      </div>
+
+      <!-- Warning Messages -->
+      <div class="warning-messages">
+        <p class="warning-text">
+          The Total Declared Value is currently set to $4,000 for this shipment, please adjust this value, as necessary.
+          The cost of transportation should be included in the Total Declared Value of the shipment.
+        </p>
+        <a href="#" class="restricted-link">See Restricted/Excluded Commodities</a>
+      </div>
+
+      <!-- Spot Quote Question -->
+      <div class="flex flex-col sm:flex-row gap-4 items-start sm:items-center">
+        <div class="flex-1 flex items-center gap-2">
+          <mat-label class="field-label mb-0">Would you like to make this shipment eligible for a Spot Quote?</mat-label>
+          <mat-icon class="info-icon">info</mat-icon>
+        </div>
+
+        <mat-button-toggle-group [hideSingleSelectionIndicator]="false">
+          <mat-button-toggle>Yes</mat-button-toggle>
+          <mat-button-toggle>No</mat-button-toggle>
+        </mat-button-toggle-group>
+      </div>
+
+      <!-- Extreme Length Question -->
+      <div class="flex flex-col sm:flex-row gap-4 items-start sm:items-center">
+        <div class="flex-1">
+          <mat-label class="field-label mb-0">Does this Shipment contain an Extreme Length Item?</mat-label>
+        </div>
+        <mat-button-toggle-group [hideSingleSelectionIndicator]="false">
+          <mat-button-toggle>Yes</mat-button-toggle>
+          <mat-button-toggle>No</mat-button-toggle>
+        </mat-button-toggle-group>
+      </div>
+
+      <!-- Protect From Freeze Question -->
+      <div class="flex flex-col sm:flex-row gap-4 items-start sm:items-center">
+        <div class="flex-1">
+          <mat-label class="field-label mb-0">Does this shipment require Protect From Freeze?</mat-label>
+        </div>
+        <mat-button-toggle-group [hideSingleSelectionIndicator]="false">
+          <mat-button-toggle>Yes</mat-button-toggle>
+          <mat-button-toggle>No</mat-button-toggle>
+        </mat-button-toggle-group>
+      </div>
+
+      <!-- Footer Warning -->
+      <div class="footer-warning">
+        <p class="warning-text">
+          For shipments larger than 12 linear ft. A manual quote is REQUIRED. Please CALL for an accurate quote.
+        </p>
+      </div>
+
+    </div>
+
+  </mat-card-content>
+</mat-card>

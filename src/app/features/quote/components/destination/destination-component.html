@@ -15,9 +15,9 @@
     <div class="flex pt-5 w-full">
       <div class="w-full sm:flex-auto">
         <mat-button-toggle-group
-          [field]="destinationForm.country"
+          [field]="destinationForm().country"
           [hideSingleSelectionIndicator]="false">
-          <mat-button-toggle value="US/CAN">US/CAN</mat-button-toggle>
+          <mat-button-toggle value="US">US/CAN</mat-button-toggle>
           <mat-button-toggle value="MEX">Mex</mat-button-toggle>
         </mat-button-toggle-group>
       </div>
@@ -28,11 +28,17 @@
         <mat-form-field appearance="fill" floatLabel="always">
           <input
             matInput
-            placeholder="City state Zip"
-            [field]="destinationForm.address"
+            placeholder="Start typing City or Zip"
+            (input)="searchTerm.set($any(($event.target).value))"
+            [matAutocomplete]="auto"
           />
-          @if(destinationForm.address().errors() && destinationForm.address().touched()) {
-            @for(error of destinationForm.address().errors();  track error) {
+          <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete" [displayWith]="displayFn" (optionSelected)="onAddressSelectedFn($event.option.value)">
+            @for (address of partialAddresses(); track address) {
+            <mat-option [value]="address">{{address.city_name}}, {{address.state_name}} {{address.zip_code}}</mat-option>
+            }
+          </mat-autocomplete>
+          @if(destinationForm().address().errors() && destinationForm().address().touched()) {
+            @for(error of destinationForm().address().errors();  track error) {
               <mat-error>{{ error.message }}</mat-error>
             }
           }
@@ -43,9 +49,11 @@
         <mat-button-toggle-group
           aria-label="Site type"
           [hideSingleSelectionIndicator]="false"
+          [field]="destinationForm().siteType"
         >
           <mat-button-toggle value="business">Business</mat-button-toggle>
           <mat-button-toggle value="residence">Residence</mat-button-toggle>
+          <mat-button-toggle value="tradeshow">Tradeshow</mat-button-toggle>
         </mat-button-toggle-group>
       </div>
     </div>
@@ -55,7 +63,7 @@
         <mat-label class=""field-label>Non Commercial Pickup Site</mat-label>
         <mat-form-field appearance="outline">
           <mat-select
-            [field]="destinationForm.nonCommercialDeliverySite"
+            [field]="destinationForm().nonCommercialDeliverySite"
             placeholder="Select..."
           >
             @for (option of nonCommercialOptions; track option) {
@@ -69,12 +77,12 @@
     <div class="flex pt-4">
       <div class="w-full">
         <mat-label>Accessorials</mat-label>
-        <mat-button-toggle-group class="flex flex-wrap gap-2" [hideMultipleSelectionIndicator]="false" multiple>
-          <mat-button-toggle value="liftgate">Liftgate</mat-button-toggle>
-          <mat-button-toggle value="notify-prior-to-arrival">Notify Prior To Arrival</mat-button-toggle>
-          <mat-button-toggle value="insidedelivery">Inside Delivery</mat-button-toggle>
-          <mat-button-toggle value="appointment">Appointment</mat-button-toggle>
-          <mat-button-toggle value="sort-and-segregate">Sort & Segregate</mat-button-toggle>
+        <mat-button-toggle-group class="flex flex-wrap gap-2" [hideMultipleSelectionIndicator]="false" multiple (change)="onAccessorialsChange($event)" >
+          <mat-button-toggle value="true" value="liftGate">Liftgate</mat-button-toggle>
+          <mat-button-toggle value="true" value="notifyPriorToArrival">Notify Prior To Arrival</mat-button-toggle>
+          <mat-button-toggle value="true" value="insideDelivery">Inside Delivery</mat-button-toggle>
+          <mat-button-toggle value="true" value="appointment">Appointment</mat-button-toggle>
+          <mat-button-toggle value="true" value="sortAndSegregate">Sort & Segregate</mat-button-toggle>
         </mat-button-toggle-group>
       </div>
     </div>

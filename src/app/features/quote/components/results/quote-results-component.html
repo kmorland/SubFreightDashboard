@@ -1,40 +1,59 @@
-<section class="container-fluid">
-    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+<div class="quote-results-container flex h-full">
+  <!-- Sidebar -->
+  @if (summary()) {
+    <app-results-sidebar
+      [summary]="summary()!"
+      (reRate)="onReRate()">
+    </app-results-sidebar>
+  }
 
-    <!--- Note that these columns can be defined in any order.
-            The actual rendered columns are set as a property on the row definition" -->
+  <!-- Main Content -->
+  <div class="results-main flex-1 p-4 overflow-auto">
+    <!-- Sort Tabs and Search -->
+    <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-4 gap-4">
+      <!-- Sort Tabs -->
+      <div class="flex gap-2">
+        @for (option of sortOptions; track option.value) {
+          <button
+            mat-stroked-button
+            [class.bg-gray-100]="sortOption() === option.value"
+            [class.font-semibold]="sortOption() === option.value"
+            (click)="onSortChange(option.value)">
+            {{ option.label }}
+          </button>
+        }
+      </div>
 
-    <!-- Position Column -->
-    <ng-container matColumnDef="position">
-        <th mat-header-cell *matHeaderCellDef> No. </th>
-        <td mat-cell *matCellDef="let element"> {{element.position}} </td>
-    </ng-container>
+      <!-- Search -->
+      <mat-form-field appearance="outline" class="search-field">
+        <mat-icon matPrefix>search</mat-icon>
+        <input matInput
+               placeholder="Search for a Carrier"
+               (input)="onSearch($any($event.target).value)">
+      </mat-form-field>
+    </div>
 
-    <!-- Name Column -->
-    <ng-container matColumnDef="name">
-        <th mat-header-cell *matHeaderCellDef> Name </th>
-        <td mat-cell *matCellDef="let element"> {{element.name}} </td>
-    </ng-container>
-
-    <!-- Weight Column -->
-    <ng-container matColumnDef="weight">
-        <th mat-header-cell *matHeaderCellDef> Weight </th>
-        <td mat-cell *matCellDef="let element"> {{element.weight}} </td>
-    </ng-container>
-
-    <!-- Symbol Column -->
-    <ng-container matColumnDef="symbol">
-        <th mat-header-cell *matHeaderCellDef> Symbol </th>
-        <td mat-cell *matCellDef="let element"> {{element.symbol}} </td>
-    </ng-container>
-
-    <!-- Actions -->
-    <ng-container matColumnDef="actions">
-        <th mat-header-cell *matHeaderCellDef> Actions </th>
-        <td mat-cell *matCellDef="let element"> <button md-raised-button (click)="onTableRowClick($event, element)" >Edit</button>  </td>
-    </ng-container> 
-
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-    </table>
-</section>
+    <!-- Results List -->
+    <div class="results-list">
+      @for (result of filteredResults; track result.id) {
+        <app-result-card
+          [result]="result"
+          (bookWithInsurance)="onBookWithInsurance($event)"
+          (bookWithoutInsurance)="onBookWithoutInsurance($event)"
+          (saveQuote)="onSaveQuote($event)"
+          (addToFavorites)="onAddToFavorites($event)"
+          (modifyDeclaredValue)="onModifyDeclaredValue($event)">
+        </app-result-card>
+      } @empty {
+        <div class="text-center py-8 text-gray-500">
+          @if (results().length === 0) {
+            <mat-spinner diameter="40" class="mx-auto mb-4"></mat-spinner>
+            <p>Loading quote results...</p>
+          } @else {
+            <p>No carriers match your search criteria.</p>
+          }
+        </div>
+      }
+    </div>
+  </div>
+</div>

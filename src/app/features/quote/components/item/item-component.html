@@ -1,235 +1,131 @@
-<div class="item-row">
-      <!-- Unit Type -->
-      <div class="item-field unit-type-field">
-        <label class="field-label">Unit Type</label>
-        <mat-form-field appearance="outline">
-          <mat-select
-            [field]="itemForm().unitType"
-            placeholder="Select..."
-            panelClass="item-select-panel"
-          >
-            @for (type of unitTypes(); track type) {
-              <mat-option [value]="type">{{ type }}</mat-option>
+<!-- Unit Type -->
+<td>
+        <select placeholder="Select..." [field]="itemForm().packageType" class="w-22 border-1 rounded p-1" (change)="onUnitTypeChangeHandler($event)">
+                <option value="">Select...</option>
+            @for (item of unitTypes | keyvalue: originalOrder; track $index) {
+                <option [value]="item.key">{{ item.value }}</option>
             }
-          </mat-select>
-          @if (itemForm().unitType().errors(); as errors) {
-            <mat-error>{{ errors[0]?.message }}</mat-error>
-          }
-        </mat-form-field>
-      </div>
+        </select>
+        <!-- <mat-form-field appearance="outline">
+            <mat-select placeholder="Select..." panelClass="">
+                @for (type of unitTypes; track type) {
+                <mat-option [value]="type">{{ type }}</mat-option>
+                }
+            </mat-select>
+        </mat-form-field> -->
+    </td>
 
-      <!-- # of Units -->
-      <div class="item-field number-field">
-        <label class="field-label"># of Units</label>
-        <mat-form-field appearance="outline">
-          <input
-            matInput
-            type="number"
-            [field]="itemForm().numberOfUnits"
-          />
-          @if (itemForm().numberOfUnits().errors(); as errors) {
-            <mat-error>{{ errors[0]?.message }}</mat-error>
-          }
-        </mat-form-field>
-      </div>
+    <!-- # of Units -->
+    <td>
+        <input type="number" class="border-1 rounded w-14 p-1" [field]="itemForm().palletCount" />
+        <!-- <mat-form-field appearance="outline">
+            <input matInput type="number" />
+        </mat-form-field> -->
+    </td>
 
-      <!-- Description/Commodity -->
-      <div class="item-field description-field">
-        <label class="field-label">Description/Commodity</label>
-        <mat-form-field appearance="outline">
-          <input
-            matInput
-            [field]="itemForm().description"
-          />
-          <button mat-icon-button matSuffix type="button">
-            <mat-icon>expand_more</mat-icon>
-          </button>
-          @if (itemForm().description().errors(); as errors) {
-            <mat-error>{{ errors[0]?.message }}</mat-error>
-          }
-        </mat-form-field>
-      </div>
-
-      <!-- NMFC -->
-      <div class="item-field nmfc-field">
-        <label class="field-label">NMFC</label>
-        <mat-form-field appearance="outline">
-          <input
-            matInput
-            [field]="itemForm().nmfc"
-          />
-        </mat-form-field>
-      </div>
-
-      <!-- Class -->
-      <div class="item-field class-field">
-        <label class="field-label">Class</label>
-        <mat-form-field appearance="outline">
-          <mat-select
-            [field]="itemForm().class"
-            panelClass="item-select-panel"
-          >
-            @for (classOption of classOptions(); track classOption) {
-              <mat-option [value]="classOption">{{ classOption }}</mat-option>
+    <!-- Description/Commodity -->
+    <td>
+        <select class="w-32 border-1 rounded p-1" (change)="onDescriptionChange($event)" [field]="itemForm().description">
+            <option>Select...</option>
+            @for (item of descriptions; track $index) {
+                <option [value]="$index">{{ item.description }}-{{item.productClass}}</option>
             }
-          </mat-select>
-        </mat-form-field>
-      </div>
-
-      <!-- # of Pcs -->
-      <div class="item-field number-field">
-        <label class="field-label"># of Pcs</label>
-        <mat-form-field appearance="outline">
-          <input
-            matInput
-            type="number"
-            [field]="itemForm().numberOfPieces"
-          />
-          @if (itemForm().numberOfPieces().errors(); as errors) {
-            <mat-error>{{ errors[0]?.message }}</mat-error>
-          }
-        </mat-form-field>
-      </div>
-
-      <!-- Weight -->
-      <div class="item-field weight-field">
-        <label class="field-label">Weight</label>
-        <div class="weight-input-group">
-          <mat-form-field appearance="outline">
-            <input
-              matInput
-              type="number"
-              [field]="itemForm().weight"
-            />
-            @if (itemForm().weight().errors(); as errors) {
-              <mat-error>{{ errors[0]?.message }}</mat-error>
-            }
-          </mat-form-field>
-          <div class="unit-toggle">
-            <button
-              type="button"
-              mat-raised-button
-              [class.active]="itemModel().weightUnit === 'LB'"
-              (click)="toggleWeightUnit('LB')"
-            >
-              LB
+        </select>
+        <!-- <mat-form-field appearance="outline">
+            <input matInput />
+            <button mat-icon-button matSuffix type="button">
+                <mat-icon>expand_more</mat-icon>
             </button>
-            <button
-              type="button"
-              mat-stroked-button
-              [class.active]="itemModel().weightUnit === 'KG'"
-              (click)="toggleWeightUnit('KG')"
-            >
-              KG
-            </button>
-          </div>
+        </mat-form-field> -->
+    </td>
+
+    <!-- NMFC -->
+    <td>
+        <input [field]="itemForm().nmfcNumber" class="w-14 border-1 rounded p-1" />
+        <!-- <mat-form-field appearance="outline">
+            <input matInput />
+        </mat-form-field> -->
+    </td>
+
+    <!-- Class -->
+    <td>
+        <mat-form-field appearance="outline">
+            <mat-select [field]="itemForm().productClass" panelClass="item-select-panel">
+                @for (classOption of productClassOptions; track classOption) {
+                <mat-option [value]="classOption">{{ classOption }}</mat-option>
+                }
+            </mat-select>
+        </mat-form-field>
+    </td>
+
+    <!-- # of Pcs -->
+    <td>
+        <input type="number" [field]="itemForm().pieceCount" class="border-1 rounded p-1 w-14" />
+        <!-- <mat-form-field appearance="outline">
+            <input matInput type="number" />
+        </mat-form-field> -->
+    </td>
+
+    <!-- Weight -->
+    <td>
+        <input type="number" placeholder="W" [field]="itemForm().weight" class="w-12 border-1 rounded p-1" />
+        <!-- <mat-form-field appearance="outline">
+            <input matInput type="number" />
+        </mat-form-field> -->
+        <mat-button-toggle-group hideSingleSelectionIndicator="true" [field]="itemForm().weightType">
+            <mat-button-toggle value="1">LB</mat-button-toggle>
+            <mat-button-toggle value="0">KG</mat-button-toggle>
+        </mat-button-toggle-group>
+    </td>
+
+        <!-- Dimensions -->
+    <td>
+        <div class="flex-row">
+            <input type="number" placeholder="L" [field]="itemForm().length" class="w-8 border-1 rounded p-1"  />
+            <input type="number" placeholder="W" [field]="itemForm().width" class="w-8 border-1 rounded p-1"  />
+            <input type="number" placeholder="H" [field]="itemForm().height" class="w-8 border-1 rounded p-1"  />
+            <!-- <mat-form-field class="w-12 no-padding" subscriptSizing="dynamic">
+                <input matInput type="number" placeholder="L" />
+            </mat-form-field> -->
+            <!-- <mat-form-field appearance="outline" class="w-12">
+                <input matInput type="number" placeholder="W" class="w-6" />
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="w-12">
+                <input matInput type="number" placeholder="H" />
+            </mat-form-field> -->
+            <mat-button-toggle-group hideSingleSelectionIndicator="true">
+                <mat-button-toggle>IN</mat-button-toggle>
+                <mat-button-toggle>FT</mat-button-toggle>
+            </mat-button-toggle-group>
         </div>
-      </div>
+    </td>
+    <!-- [class.active]="itemModel().dimensions.unit.value() === 'FT'" -->
+    <!-- [class.active]="itemModel().dimensions.unit.value() === 'IN'" -->
 
-      <!-- Dimensions -->
-      <div class="item-field dimensions-field">
-        <label class="field-label">
-          Dimensions
-          <mat-icon class="info-icon" matTooltip="Length x Width x Height">info</mat-icon>
-        </label>
-        <div class="dimensions-group">
-          <mat-form-field appearance="outline">
-            <input
-              matInput
-              type="number"
-              placeholder="L"
-              [field]="itemForm().dimensions.length"
-            />
-          </mat-form-field>
-          <mat-form-field appearance="outline">
-            <input
-              matInput
-              type="number"
-              placeholder="W"
-              [field]="itemForm().dimensions.width"
-            />
-          </mat-form-field>
-          <mat-form-field appearance="outline">
-            <input
-              matInput
-              type="number"
-              placeholder="H"
-              [field]="itemForm().dimensions.height"
-            />
-          </mat-form-field>
-          <div class="unit-toggle">
-            <button
-              type="button"
-              mat-raised-button
-              (click)="toggleDimensionUnit('IN')"
-            >
-              IN
-            </button>
-            <button
-              type="button"
-              mat-stroked-button
-              (click)="toggleDimensionUnit('FT')"
-            >
-              FT
-            </button>
-          </div>
-        </div>
-      </div>
-      <!-- [class.active]="itemModel().dimensions.unit.value() === 'FT'" -->
-      <!-- [class.active]="itemModel().dimensions.unit.value() === 'IN'" -->
+    <!-- Density -->
+    <td>
+        <input type="number" class="w-14 border-1 rounded p-1" />
+        <!-- <mat-form-field appearance="outline">
+            <input matInput type="number" />
+        </mat-form-field> -->
+    </td>
 
-      <!-- Density -->
-      <div class="item-field density-field">
-        <label class="field-label">
-          Density
-          <span class="density-unit">(lb / cu ft)</span>
-        </label>
-        <mat-form-field appearance="outline">
-          <input
-            matInput
-            type="number"
-            [field]="itemForm().density"
-          />
-        </mat-form-field>
-      </div>
+    <!-- Stackable -->
+    <td>
+        <mat-button-toggle value="false" [value]="itemForm().stackable">Stackable</mat-button-toggle>
+    </td>
 
-      <!-- Stackable -->
-      <div class="item-field checkbox-field">
-        <label class="field-label">Stackable</label>
-        <button
-          type="button"
-          mat-stroked-button
-          [class.active]="itemModel().stackable"
-          (click)="toggleStackable()"
-        >
-          {{ itemModel().stackable ? 'Stackable' : 'Stackable' }}
-        </button>
-      </div>
 
-      <!-- Hazmat -->
-      <div class="item-field checkbox-field">
-        <label class="field-label">Hazmat</label>
-        <button
-          type="button"
-          mat-stroked-button
-          [class.active]="itemModel().hazmat"
-          (click)="toggleHazmat()"
-        >
-          {{ itemModel().hazmat ? 'Hazmat' : 'Hazmat' }}
-        </button>
-      </div>
 
-      <!-- Delete -->
-      <div class="item-field delete-field">
-        <label class="field-label">&nbsp;</label>
-        <button
-          type="button"
-          mat-icon-button
-          (click)="onDelete()"
-          matTooltip="Delete item"
-          aria-label="Delete item"
-        >
-          <mat-icon>delete</mat-icon>
-        </button>
-      </div>
-    </div>
+<!-- Hazmat -->
+<td>
+    <mat-button-toggle value="false" [value]="itemForm().hazmat">Hazmat</mat-button-toggle>
+</td>
+
+<!-- Delete -->
+<div class="item-field delete-field">
+    <label class="field-label">&nbsp;</label>
+    <button type="button" mat-icon-button (click)="onDelete()" matTooltip="Delete item" aria-label="Delete item">
+        <mat-icon>delete</mat-icon>
+    </button>
+</div>

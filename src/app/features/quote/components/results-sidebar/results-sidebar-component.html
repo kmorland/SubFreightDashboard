@@ -1,0 +1,164 @@
+<div class="sidebar bg-gray-50 p-4 h-full">
+  <!-- Origin -->
+  <div class="mb-4">
+    <h3 class="text-sm font-semibold text-gray-700 mb-2">Origin</h3>
+    <div class="bg-white border border-gray-200 rounded px-3 py-2 text-sm">
+      {{ summary().origin }}
+    </div>
+  </div>
+
+  <!-- Destination -->
+  <div class="mb-4">
+    <h3 class="text-sm font-semibold text-gray-700 mb-2">Destination</h3>
+    <div class="bg-white border border-gray-200 rounded px-3 py-2 text-sm">
+      {{ summary().destination }}
+    </div>
+  </div>
+
+  <!-- Miles -->
+  <div class="mb-4 text-sm font-semibold text-gray-700">
+    {{ summary().miles }} Miles
+  </div>
+
+  <!-- Class / Weight -->
+  <div class="flex gap-2 mb-4">
+    <div class="flex-1">
+      <label class="text-xs text-gray-500">Class</label>
+      <mat-form-field appearance="outline" class="class-field">
+        <mat-select [value]="summary().freightClass">
+          <mat-option [value]="50">50</mat-option>
+          <mat-option [value]="55">55</mat-option>
+          <mat-option [value]="60">60</mat-option>
+          <mat-option [value]="65">65</mat-option>
+          <mat-option [value]="70">70</mat-option>
+          <mat-option [value]="77.5">77.5</mat-option>
+          <mat-option [value]="85">85</mat-option>
+          <mat-option [value]="92.5">92.5</mat-option>
+          <mat-option [value]="100">100</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="flex-1">
+      <label class="text-xs text-gray-500">Weight</label>
+      <div class="flex items-center gap-1">
+        <mat-form-field appearance="outline" class="weight-field">
+          <input matInput type="number" [value]="summary().weight">
+        </mat-form-field>
+        <span class="text-xs text-gray-500">LB</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Pickup Options -->
+  <div class="mb-4">
+    <h3 class="text-sm font-semibold text-gray-700 mb-2">Pickup Options</h3>
+
+    <!-- Site Type Buttons -->
+    <div class="flex flex-col gap-1 mb-3">
+      <button mat-stroked-button
+              [class.bg-blue-600]="summary().pickupOptions.siteType === 'business'"
+              [class.text-white]="summary().pickupOptions.siteType === 'business'"
+              class="text-left justify-start text-sm">
+        <mat-icon *ngIf="summary().pickupOptions.siteType === 'business'" class="mr-1 text-sm">check</mat-icon>
+        Business
+      </button>
+      <button mat-stroked-button
+              [class.bg-blue-600]="summary().pickupOptions.siteType === 'residence'"
+              [class.text-white]="summary().pickupOptions.siteType === 'residence'"
+              class="text-left justify-start text-sm">
+        Residence
+      </button>
+      <button mat-stroked-button
+              [class.bg-blue-600]="summary().pickupOptions.siteType === 'terminal'"
+              [class.text-white]="summary().pickupOptions.siteType === 'terminal'"
+              class="text-left justify-start text-sm">
+        Terminal Drop Off
+      </button>
+    </div>
+
+    <!-- Pickup Accessorials -->
+    <h4 class="text-xs text-gray-500 mb-2">Pickup Accessorials</h4>
+    <div class="flex flex-col gap-1 mb-3">
+      @for (accessorial of pickupAccessorials; track accessorial.key) {
+        <button mat-stroked-button
+                [class.bg-blue-100]="isPickupAccessorialSelected(accessorial.key)"
+                [class.border-blue-400]="isPickupAccessorialSelected(accessorial.key)"
+                class="text-left justify-start text-sm">
+          {{ accessorial.label }}
+        </button>
+      }
+    </div>
+
+    <!-- Non Commercial Pickup Site -->
+    <h4 class="text-xs text-gray-500 mb-2">Non Commercial Pickup Site</h4>
+    <mat-form-field appearance="outline" class="w-full">
+      <mat-select placeholder="Select...">
+        @for (option of nonCommercialPickupOptions; track option) {
+          <mat-option [value]="option">{{ option }}</mat-option>
+        }
+      </mat-select>
+    </mat-form-field>
+  </div>
+
+  <!-- Delivery Options -->
+  <div class="mb-4">
+    <h3 class="text-sm font-semibold text-gray-700 mb-2">Delivery Options</h3>
+
+    <!-- Site Type Buttons -->
+    <div class="flex flex-col gap-1 mb-3">
+      <button mat-stroked-button
+              [class.bg-blue-600]="summary().deliveryOptions.siteType === 'business'"
+              [class.text-white]="summary().deliveryOptions.siteType === 'business'"
+              class="text-left justify-start text-sm">
+        <mat-icon *ngIf="summary().deliveryOptions.siteType === 'business'" class="mr-1 text-sm">check</mat-icon>
+        Business
+      </button>
+      <button mat-stroked-button
+              [class.bg-blue-600]="summary().deliveryOptions.siteType === 'residence'"
+              [class.text-white]="summary().deliveryOptions.siteType === 'residence'"
+              class="text-left justify-start text-sm">
+        Residence
+      </button>
+      <button mat-stroked-button
+              [class.bg-blue-600]="summary().deliveryOptions.siteType === 'tradeshow'"
+              [class.text-white]="summary().deliveryOptions.siteType === 'tradeshow'"
+              class="text-left justify-start text-sm">
+        TradeShow
+      </button>
+      <button mat-stroked-button
+              [class.bg-blue-600]="summary().deliveryOptions.siteType === 'terminal'"
+              [class.text-white]="summary().deliveryOptions.siteType === 'terminal'"
+              class="text-left justify-start text-sm">
+        Terminal Pickup
+      </button>
+    </div>
+
+    <!-- Delivery Accessorials -->
+    <h4 class="text-xs text-gray-500 mb-2">Delivery Accessorials</h4>
+    <div class="flex flex-col gap-1 mb-3">
+      @for (accessorial of deliveryAccessorials; track accessorial.key) {
+        <button mat-stroked-button
+                [class.bg-blue-100]="isDeliveryAccessorialSelected(accessorial.key)"
+                [class.border-blue-400]="isDeliveryAccessorialSelected(accessorial.key)"
+                class="text-left justify-start text-sm">
+          {{ accessorial.label }}
+        </button>
+      }
+    </div>
+
+    <!-- Non Commercial Delivery Site -->
+    <h4 class="text-xs text-gray-500 mb-2">Non Commercial Delivery Site</h4>
+    <mat-form-field appearance="outline" class="w-full">
+      <mat-select placeholder="Select...">
+        @for (option of nonCommercialDeliveryOptions; track option) {
+          <mat-option [value]="option">{{ option }}</mat-option>
+        }
+      </mat-select>
+    </mat-form-field>
+  </div>
+
+  <!-- Re-Rate Button -->
+  <button mat-flat-button color="warn" class="w-full" (click)="onReRate()">
+    Re-Rate It
+  </button>
+</div>

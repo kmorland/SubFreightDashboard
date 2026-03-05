@@ -1,0 +1,172 @@
+{
+  "summary": {
+    "origin": "Palmetto, FL 34221",
+    "destination": "Burbank, CA 91505",
+    "miles": 2567,
+    "freightClass": 70,
+    "weight": 4000,
+    "pickupOptions": {
+      "siteType": "business",
+      "accessorials": ["liftGate", "insidePickup", "protectFromFreeze", "appointment"],
+      "nonCommercialSite": null
+    },
+    "deliveryOptions": {
+      "siteType": "business",
+      "accessorials": ["liftGate", "notifyPriorToArrival", "insideDelivery", "sortAndSegregate", "appointment"],
+      "nonCommercialSite": null
+    }
+  },
+  "results": [
+    {
+      "id": "rl-001",
+      "carrierName": "R&L Carriers",
+      "carrierLogo": "assets/carriers/rl-carriers.png",
+      "isFavorite": false,
+      "badges": [
+        { "type": "hazmat", "tooltip": "Hazmat Certified" },
+        { "type": "temperature", "tooltip": "Temperature Controlled" },
+        { "type": "warning", "tooltip": "Restrictions Apply" }
+      ],
+      "guaranteedService": {
+        "available": false
+      },
+      "carrierMaxLiability": true,
+      "dbe": true,
+      "declaredValue": 4000,
+      "deliveryType": "Direct Point",
+      "estimatedDeliveryDate": "03/09/2026",
+      "transitDays": 5,
+      "pricing": {
+        "withInsurance": 1156.04,
+        "withoutInsurance": 1126.04
+      },
+      "restrictions": [
+        "Linear Foot Max 20",
+        "Cubic Cap 750",
+        "Heights > 50 & Widths > 70 Bumped to 96 for Density",
+        "No Amazon"
+      ]
+    },
+    {
+      "id": "xpo-001",
+      "carrierName": "XPO Logistics",
+      "carrierLogo": "assets/carriers/xpo-logistics.png",
+      "isFavorite": false,
+      "badges": [
+        { "type": "hazmat", "tooltip": "Hazmat Certified" },
+        { "type": "temperature", "tooltip": "Temperature Controlled" },
+        { "type": "warning", "tooltip": "Restrictions Apply" }
+      ],
+      "guaranteedService": {
+        "available": true,
+        "date": "Mar 09",
+        "time": "05:00PM",
+        "cost": 239.85
+      },
+      "carrierMaxLiability": true,
+      "dbe": true,
+      "declaredValue": 4000,
+      "deliveryType": "Direct Point",
+      "estimatedDeliveryDate": "03/09/2026",
+      "transitDays": 5,
+      "pricing": {
+        "withInsurance": 1164.10,
+        "withoutInsurance": 1134.10
+      },
+      "restrictions": [
+        "Linear Foot Max 14",
+        "Cubic Capacity 350",
+        "Height >74\" Bumped to 96\"",
+        "Grocery whse additional fee"
+      ]
+    },
+    {
+      "id": "tforce-001",
+      "carrierName": "TForce Freight",
+      "carrierLogo": "assets/carriers/tforce-freight.png",
+      "isFavorite": false,
+      "badges": [
+        { "type": "hazmat", "tooltip": "Hazmat Certified" },
+        { "type": "temperature", "tooltip": "Temperature Controlled" },
+        { "type": "warning", "tooltip": "Restrictions Apply" }
+      ],
+      "guaranteedService": {
+        "available": false
+      },
+      "carrierMaxLiability": true,
+      "dbe": true,
+      "declaredValue": 4000,
+      "deliveryType": "Direct Point",
+      "estimatedDeliveryDate": "03/10/2026",
+      "transitDays": 6,
+      "pricing": {
+        "withInsurance": 1168.82,
+        "withoutInsurance": 1138.82
+      },
+      "restrictions": [
+        "Linear Ft Max 14",
+        "Cubic Capacity 750",
+        "Height >60\" Bumped to 96\"",
+        "Amazon",
+        "Grocery adtl fee"
+      ]
+    },
+    {
+      "id": "estes-001",
+      "carrierName": "Estes Express",
+      "carrierLogo": "assets/carriers/estes-express.png",
+      "isFavorite": false,
+      "badges": [
+        { "type": "hazmat", "tooltip": "Hazmat Certified" },
+        { "type": "temperature", "tooltip": "Temperature Controlled" },
+        { "type": "warning", "tooltip": "Restrictions Apply" }
+      ],
+      "guaranteedService": {
+        "available": false
+      },
+      "carrierMaxLiability": true,
+      "dbe": true,
+      "declaredValue": 4000,
+      "deliveryType": "Direct Point",
+      "estimatedDeliveryDate": "03/09/2026",
+      "transitDays": 5,
+      "pricing": {
+        "withInsurance": 1268.08,
+        "withoutInsurance": 1238.08
+      },
+      "restrictions": [
+        "Linear Foot Max 19",
+        "Cubic Cap 750",
+        "Height Bumped to 84\"",
+        "Grocery Warehouse adtl fee"
+      ]
+    },
+    {
+      "id": "sefl-001",
+      "carrierName": "Southeastern Freight Lines",
+      "carrierLogo": "assets/carriers/sefl.png",
+      "isFavorite": false,
+      "badges": [
+        { "type": "hazmat", "tooltip": "Hazmat Certified" },
+        { "type": "temperature", "tooltip": "Temperature Controlled" }
+      ],
+      "guaranteedService": {
+        "available": false
+      },
+      "carrierMaxLiability": true,
+      "dbe": true,
+      "declaredValue": 4000,
+      "deliveryType": "Direct Point",
+      "estimatedDeliveryDate": "03/10/2026",
+      "transitDays": 6,
+      "pricing": {
+        "withInsurance": 1276.22,
+        "withoutInsurance": 1246.22
+      },
+      "restrictions": [
+        "Linear Foot Max 16",
+        "Cubic Cap 750"
+      ]
+    }
+  ]
+}

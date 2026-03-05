@@ -1,22 +1,44 @@
-<mat-card>
-  <mat-card-header>
+<mat-card class="w-full">
+  <mat-card-header class="border-b-2 border-blue-500">
     <mat-card-title>Shipment Items</mat-card-title>
   </mat-card-header>
   <mat-card-content>
-    <!-- Item Rows -->
-    @for (item of items(); track $index) {
-      <app-item
-        [itemForm]="itemForms()[$index]?.form"
-        [itemModel]="itemForms()[$index]?.model"
-        [unitTypes]="unitTypes"
-        [classOptions]="classOptions"
-        (weightUnitToggle)="onWeightUnitToggle($index, $event)"
-        (dimensionUnitToggle)="onDimensionUnitToggle($index, $event)"
-        (stackableToggle)="onStackableToggle($index)"
-        (hazmatToggle)="onHazmatToggle($index)"
-        (deleteItem)="onRemoveRow($index)"
-      />
-    }
+
+
+      <table class="w-full">
+      <thead>
+        <tr>
+          <th class="w-24">Unit Type</th>
+          <th class="w-16"># of units</th>
+          <th class="w-36">Description/Commodity</th>
+          <th class="w-16">NMFC</th>
+          <th class="w-18">Class</th>
+          <th class="w-16"># of pcs</th>
+          <th class="w-30">Weight</th>
+          <th class="w-48">Dimensions</th>
+          <th class="w-16">
+            Density
+            <br />
+            <span>(lb / cu ft)</span>
+          </th>
+          <th class="w-20">Stackable</th>
+          <th class="w-20">Hazmat</th>
+          <th class="w-10"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Item Rows -->
+        @for (item of quoteForm().items; track $index) {
+          <tr app-item
+            [itemForm]="item"
+            (deleteItem)="onRemoveRow($index)"
+          ></tr>
+        }
+      </tbody>
+    </table>
+    
+    
+    
   </mat-card-content>
   <mat-card-footer>
     <mat-card-actions>
@@ -38,16 +60,16 @@
           Density Calculator
         </button>
 
-      <div class="totals">
+      <div class="total">
         <span class="total-item">
-          <strong>Total Weight(LB):</strong> {{ getTotalWeight() }}
+          <!-- <strong>Total Weight(LB):</strong> {{ getTotalWeight() }} -->
         </span>
         <span class="total-item">
           <mat-icon class="info-icon" matTooltip="Total Density">info</mat-icon>
-          <strong>Total Density(lb/cu ft):</strong> {{ getTotalDensity() }}
+          <!-- <strong>Total Density(lb/cu ft):</strong> {{ getTotalDensity() }} -->
         </span>
         <span class="total-item">
-          <strong>Total Volume(cu ft):</strong> {{ getTotalVolume() }}
+          <!-- <strong>Total Volume(cu ft):</strong> {{ getTotalVolume() }} -->
         </span>
       </div>  
     </mat-card-actions>
